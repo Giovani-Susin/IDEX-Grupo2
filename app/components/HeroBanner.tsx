@@ -15,8 +15,9 @@ export default function HeroBanner({ slide }: { slide: Slide }) {
           src={slide.background}
           alt="background"
           fill
-          className="object-cover scale-110"
+          sizes="100vw"
           priority
+          className="object-cover scale-110"
         />
       </ParallaxLayer>
 
@@ -29,7 +30,7 @@ export default function HeroBanner({ slide }: { slide: Slide }) {
             md:w-[60vw] 
             lg:w-[50vw] 
             xl:w-[40vw] 
-            2xl:w-[35vw] 
+            2xl:w-[45vw] 
             max-w-[900px] 
             h-[30vh] 
             max-h-[400px]"
@@ -38,6 +39,7 @@ export default function HeroBanner({ slide }: { slide: Slide }) {
               src={slide.logo}
               alt="logo"
               fill
+              sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 40vw"
               className="object-contain drop-shadow-2xl"
             />
           </div>
