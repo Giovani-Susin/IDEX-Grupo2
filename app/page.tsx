@@ -1,3 +1,13 @@
+import HeroSelector from "./components/HeroSelector";
+
+function hero() {
+  
+  return (
+    <div>
+      <HeroSelector/>
+    </div>
+  );
+}
 
 
 const page = () => {
@@ -8,5 +18,5 @@ const page = () => {
   )
 }
 
-export default page
+export default hero
 
