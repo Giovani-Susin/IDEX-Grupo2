@@ -1,9 +1,10 @@
+import Carousel from "@/components/Carousel"
 
 
 const page = () => {
   return (
     <div>
-
+        <Carousel />
     </div>
   )
 }
