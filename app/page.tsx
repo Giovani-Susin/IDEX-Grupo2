@@ -1,12 +1,11 @@
+import JogosEmDestaque from "./components/JogosEmDestaque";
 
-
-const page = () => {
+const Page = () => {
   return (
-    <div>
+    <main>
+      <JogosEmDestaque />
+    </main>
+  );
+};
 
-    </div>
-  )
-}
-
-export default page
-
+export default Page;
