@@ -1,12 +1,13 @@
+import { Feedback } from "../components/Feedback";
 
-
-const page = () => {
+const Page = () => {
   return (
-    <div>
+    <div> 
 
+        <Feedback />  
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
 
