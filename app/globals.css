@@ -64,8 +64,8 @@ body {
 /* GRID RESPONSIVO */
 .jogos-destaque-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 36px;
 }
 
 /*  CARD INDIVIDUAL  */
@@ -171,31 +171,32 @@ body {
 
 /* RESPONSIVIDADE */
 
-/* Telas muito grandes (>= 1600px): 6 colunas */
+/* Telas muito grandes (>= 1600px): 5 colunas */
 @media (min-width: 1600px) {
-  .jogos-destaque-grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-/* Telas grandes (1200px - 1599px): 5 colunas */
-@media (min-width: 1200px) and (max-width: 1599px) {
   .jogos-destaque-grid {
     grid-template-columns: repeat(5, 1fr);
   }
 }
 
-/* Desktop padrão (900px - 1199px): 4 colunas */
-@media (min-width: 900px) and (max-width: 1199px) {
+/* Telas grandes (1200px - 1599px): 4 colunas */
+@media (min-width: 1200px) and (max-width: 1599px) {
   .jogos-destaque-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* Tablet grande (640px - 899px): 3 colunas */
-@media (min-width: 640px) and (max-width: 899px) {
+/* Desktop padrão (900px - 1199px): 3 colunas */
+@media (min-width: 900px) and (max-width: 1199px) {
   .jogos-destaque-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet grande (640px - 899px): 2 colunas */
+@media (min-width: 640px) and (max-width: 899px) {
+  .jogos-destaque-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
   }
 
   .jogos-destaque-container {
@@ -207,7 +208,7 @@ body {
 @media (min-width: 420px) and (max-width: 639px) {
   .jogos-destaque-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 20px;
   }
 
   .jogos-destaque-container {
