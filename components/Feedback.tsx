@@ -4,20 +4,64 @@ import { useState } from "react";
 import { Card, Button, Input, TextArea } from "@heroui/react";
 
 export const Feedback = () => {
-  const [nome, setNome] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [jogo, setJogo] = useState("");
-  const [avaliacao, setAvaliacao] = useState("");
+  const [game, setGame] = useState("");
+  const [review, setReview] = useState("");
 
+  const [EnterSpacePressed, setEnterSpacePressed] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleEnviar = () => {
-    //apaga os textos definindo o estado como vazio
-    setNome("");
+  const [errorName, setErrorName] = useState(false);
+  const [errorEmailEmpty, setErrorEmailEmpty] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorGame, setErrorGame] = useState(false);
+  const [errorReview, setErrorReview] = useState(false);
+
+  const handleSend = () => {
+    let error = false;
+
+    if (!name.trim()) {
+      setErrorName(true);
+      error = true;
+    }
+    else setErrorName(false);
+
+    if (!email.trim()) {
+      setErrorEmailEmpty(true);
+      setErrorEmail(false);
+      error = true;
+    }
+
+    else if (!validEmail.test(email)) {
+      setErrorEmail(true);
+      setErrorEmailEmpty(false);
+      error = true;
+    }
+    else {
+      setErrorEmail(false);
+      setErrorEmailEmpty(false);
+    }
+
+    if (!game.trim()) {
+      setErrorGame(true);
+      error = true;
+    }
+    else setErrorGame(false);
+
+    if (!review.trim()) {
+      setErrorReview(true);
+      error = true;
+    }
+
+    if (error) return;
+
+    setName("");
     setEmail("");
-    setJogo("");
-    setAvaliacao("");
-  
+    setGame("");
+    setReview("");
+
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
@@ -26,74 +70,138 @@ export const Feedback = () => {
   };
 
   return (
-    <section className="bg-[] w-full p-8 mt-16"> 
+    <section className="bg-[] w-full p-8 mt-16">
 
-      {/*conteiner principal: start impede que o mascote se mova junto com a caixa de feedback*/}
+      {/*main container*/}
       <div className="flex flex-col md:flex-row items-start justify-center gap-10 max-w-5xl mx-auto">
-        
-        {/*Imagem mascote*/}
-        <div className="w-full md:w-1/2 flex justify-center">
-           <img
-              src="mascote_IDE.svg"
-              alt="mascote IDE"
-              className="w-full h-auto" />
-        </div>
-        
-        {/*caixa do formulário */}
-        <div className="w-full md:w-1/2 bg-[#7726BD] p-8 rounded-2xl">
-           <h4 className="text-xl text-center font-bold text-black mb-8">
-            Dê seu feedback para os desenvolvedores
-           </h4>
-           
-           <div className="flex flex-col gap-4 w-full text-black">
-             <Input 
-               type="text" 
-               placeholder="Seu nome" 
-               value={nome}
-               onChange={(e) => setNome(e.target.value)}
-               className="bg-white rounded p-2" 
-             />
-             
-             <Input 
-               type="email" 
-               placeholder="Seu endereço de e-mail" 
-               value={email}
-               onChange={(e) => setEmail(e.target.value)}
-               className="bg-white rounded p-2"
-             />
-             
-             <Input 
-               type="text" 
-               placeholder="Nome do jogo"
-               value={jogo}
-               onChange={(e) => setJogo(e.target.value)} 
-               className="bg-white rounded p-2"
-             />
-             
-             <TextArea 
-               placeholder="Deixe sua avaliação" 
-               value={avaliacao}
-               onChange={(e) => setAvaliacao(e.target.value)}
-               className="bg-white rounded min-h-[120px] p-2"
-             />
-           </div>
 
-           <div className="flex justify-center mt-6">
-             <Button 
-             onClick={handleEnviar}
-             className="bg-white text-[#7726BD] font-bold rounded-full px-8 uppercase
-             hover:bg-gray-300 transition-colors">
+        {/*mascot image*/}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <img
+            src="mascote_IDE.svg"
+            alt="mascote IDE"
+            className="w-full h-auto
+              transition-all duration-300
+              hover:scale-105
+              hover:drop-shadow-[0_0_15px_rgba(119,38,189,1)]"
+          />
+        </div>
+
+        {/*form box*/}
+        <div className="w-full md:w-1/2 bg-[#7726BD] p-8 rounded-2xl flex flex-col">
+          <h4 className="text-xl text-center font-bold text-black mb-8">
+            Dê seu feedback para os desenvolvedores
+          </h4>
+          <div className="flex flex-col gap-4 w-full text-black">
+
+            {/*name text bar*/}
+            <div className="flex flex-col">
+              <Input
+                type="text"
+                placeholder="Seu nome"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setErrorName(false);
+                }}
+                className={`bg-white rounded p-2 ${errorName ? "border-2 border-red-500" : "border-2 border-black"}`}
+              />
+
+              {errorName && (
+                <span className="text-red-300 text-sm mt-1">
+                  Por favor, preencha o seu nome.
+                </span>
+              )}
+            </div>
+
+            {/*email text bar*/}
+            <div className="flex flex-col">
+              <Input
+                type="email"
+                placeholder="Seu endereço de e-mail"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setErrorEmail(false);
+                  setErrorEmailEmpty(false);
+                }}
+                className={`bg-white rounded p-2 ${errorEmail || errorEmailEmpty ? "border-2 border-red-500" : "border-2 border-black"}`}
+              />
+
+              {errorEmailEmpty && (
+                <span className="text-red-300 text-sm mt-1">
+                  Por favor, preencha o seu email.
+                </span>
+              )}
+
+              {errorEmail && (
+                <span className="text-red-300 text-sm mt-1">
+                  Por favor, digite um email válido.
+                </span>
+              )}
+            </div>
+
+            {/*game text bar*/}
+            <div className="flex flex-col">
+              <Input
+                type="text"
+                placeholder="Nome do jogo"
+                value={game}
+                onChange={(e) => {
+                  setGame(e.target.value);
+                  setErrorGame(false);
+
+                }}
+                className={`bg-white rounded p-2 ${errorGame ? "border-2 border-red-500" : "border-2 border-black"}`}
+              />
+              {errorGame && (
+                <span className="text-red-300 text-sm mt-1">
+                  Por favor, preencha o nome do jogo.
+                </span>
+              )}
+            </div>
+
+            {/*review text bar*/}
+            <div className="flex flex-col">
+              <TextArea
+                placeholder="Deixe sua avaliação"
+                value={review}
+                onChange={(e) => {
+                  setReview(e.target.value);
+                  setErrorReview(false);
+                  setEnterSpacePressed(false);
+                }}
+                className={`bg-white rounded p-2 min-h-[120px] ${errorReview ? "border-2 border-red-500" : "border-2 border-black"}`}
+              />
+              {errorReview && (
+                <span className="text-red-300 text-sm mt-1">
+                  Por favor, escreva a sua avaliação.
+                </span>
+              )}
+            </div>
+
+            {/*Send button*/}
+            <div className="flex justify-center mt-4">
+              <Button
+                onClick={handleSend}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setEnterSpacePressed(true); }}
+                onKeyUp={(e) => { if (e.key === 'Enter' || e.key === ' ')  setEnterSpacePressed(false); }}
+                                
+                className={`bg-white text-[#7726BD] font-bold rounded-full px-8 uppercase
+                hover:bg-gray-300 transition-colors border-2 border-black
+                ${EnterSpacePressed ? "!bg-gray-400 scale-95" : "active:bg-gray-400 active:scale-95"}`}>
                 Enviar
-             </Button>
-           </div>
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/*notificacao toast*/}
+      {/*sent feedback notification*/}
       <div className={` fixed bottom-5 left-1/2 -translate-x-1/2 
           z-[100] bg-white text-[#7726BD] px-6 py-3 rounded-full 
-        transition-all duration-200 ease-in-out
-        ${showToast ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"} `}> 
+        transition-all duration-200 ease-in-out 
+        ${showToast ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"} `}>
         Feedback enviado com sucesso!
       </div>
     </section>
