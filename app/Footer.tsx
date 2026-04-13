@@ -1,6 +1,6 @@
 export default function Footer () {
   return (
-  <div>
+  <div className="footer">
     <div>
       IDE © Todos os direitos reservados.
     </div>
