@@ -1,12 +1,12 @@
 export default function Footer () {
   return (
-  <div className="footer">
-    <div>
+  <footer className="footer">
+    <p>
       IDE © Todos os direitos reservados.
-    </div>
-    <div>
-    Termos de Uso | Politica de Privacidade | Política de Cookies
-    </div>
-  </div>
+    </p>>
+    <p>
+    Termos de Uso | Política de Privacidade | Política de Cookies
+    </p>
+  </footer>
     );
 }
