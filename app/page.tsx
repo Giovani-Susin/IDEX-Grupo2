@@ -1,11 +1,16 @@
+import HeroSelector from "./components/HeroSelector";
+import Carousel from "@/app/components/Carousel";
 import JogosEmDestaque from "./components/JogosEmDestaque";
 
-const Page = () => {
+const page = () => {
   return (
-    <main>
+    <div>
+      <HeroSelector/>
+      <Carousel />
       <JogosEmDestaque />
-    </main>
-  );
-};
+    </div>
+  )
+}
+
 
 export default Page;
