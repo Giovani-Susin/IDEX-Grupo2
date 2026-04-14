@@ -15,7 +15,7 @@ const jogos: Jogo[] = [
   {
     id: 1,
     titulo: "Undertale",
-    imagem: "/UNDERTALE 1.svg",
+    imagem: "/jogos/UNDERTALE 1.svg",
     precoOriginal: 19.99,
     precoComDesconto: null,
     percentualDesconto: null,
@@ -23,7 +23,7 @@ const jogos: Jogo[] = [
   {
     id: 2,
     titulo: "Dead by Daylight",
-    imagem: "/DBD 1.svg",
+    imagem: "/jogos/DBD 1.svg",
     precoOriginal: 59.99,
     precoComDesconto: null,
     percentualDesconto: null,
@@ -31,7 +31,7 @@ const jogos: Jogo[] = [
   {
     id: 3,
     titulo: "Hades",
-    imagem: "/HADES 1.svg",
+    imagem: "/jogos/HADES 1.svg",
     precoOriginal: 44.99,
     precoComDesconto: 29.99,
     percentualDesconto: 33,
@@ -39,7 +39,7 @@ const jogos: Jogo[] = [
   {
     id: 4,
     titulo: "Noita",
-    imagem: "/NOITA 1.svg",
+    imagem: "/jogos/NOITA 1.svg",
     precoOriginal: 34.99,
     precoComDesconto: null,
     percentualDesconto: null,
@@ -47,7 +47,7 @@ const jogos: Jogo[] = [
   {
     id: 5,
     titulo: "Age of Empires II",
-    imagem: "/AGE 1.svg",
+    imagem: "/jogos/AGE 1.svg",
     precoOriginal: 49.99,
     precoComDesconto: 34.99,
     percentualDesconto: 30,
@@ -55,7 +55,7 @@ const jogos: Jogo[] = [
   {
     id: 6,
     titulo: "Disco Elysium",
-    imagem: "/DISCO 2.svg",
+    imagem: "/jogos/DISCO 2.svg",
     precoOriginal: 74.99,
     precoComDesconto: null,
     percentualDesconto: null,
@@ -63,7 +63,7 @@ const jogos: Jogo[] = [
   {
     id: 7,
     titulo: "Final Fantasy VII",
-    imagem: "/FINAL 2.svg",
+    imagem: "/jogos/FINAL 2.svg",
     precoOriginal: 149.99,
     precoComDesconto: 89.99,
     percentualDesconto: 40,
@@ -71,7 +71,7 @@ const jogos: Jogo[] = [
   {
     id: 8,
     titulo: "Enigma of Fear",
-    imagem: "/ENIGMADOMEDO 1.svg",
+    imagem: "/jogos/ENIGMADOMEDO 1.svg",
     precoOriginal: 29.99,
     precoComDesconto: null,
     percentualDesconto: null,
@@ -79,7 +79,7 @@ const jogos: Jogo[] = [
   {
     id: 9,
     titulo: "Skyrim",
-    imagem: "/SKYRIM 1.svg",
+    imagem: "/jogos/SKYRIM 1.svg",
     precoOriginal: 79.99,
     precoComDesconto: 39.99,
     percentualDesconto: 50,
@@ -87,7 +87,7 @@ const jogos: Jogo[] = [
   {
     id: 10,
     titulo: "Celeste",
-    imagem: "/CELESTE 1.svg",
+    imagem: "/jogos/CELESTE 1.svg",
     precoOriginal: 39.99,
     precoComDesconto: null,
     percentualDesconto: null,
@@ -95,7 +95,7 @@ const jogos: Jogo[] = [
   {
     id: 11,
     titulo: "Terraria",
-    imagem: "/TERRARIA 1.svg",
+    imagem: "/jogos/TERRARIA 1.svg",
     precoOriginal: 24.99,
     precoComDesconto: 12.49,
     percentualDesconto: 50,
@@ -103,7 +103,7 @@ const jogos: Jogo[] = [
   {
     id: 12,
     titulo: "The Witcher 3",
-    imagem: "/THEWITCHER 1.svg",
+    imagem: "/jogos/THEWITCHER 1.svg",
     precoOriginal: 89.99,
     precoComDesconto: null,
     percentualDesconto: null,

@@ -11,7 +11,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full shadow-md bg-[#00120b]">
+    <header className="sticky top-0 z-50 w-full shadow-md bg-black">
       <div className="mx-auto max-w-[1920px] px-10">
         <div className="flex h-20 items-center justify-between">
 
