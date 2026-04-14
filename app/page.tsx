@@ -1,9 +1,8 @@
-import { Feedback } from "../components/Feedback";
+import { Feedback } from "./components/Feedback";
 
 const Page = () => {
   return (
     <div> 
-
         <Feedback />  
     </div>
   );
