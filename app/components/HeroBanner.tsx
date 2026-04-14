@@ -8,9 +8,9 @@ type Slide = {
 
 export default function HeroBanner({ slide }: { slide: Slide }) {
   return (
-    <div className="relative w-full h-[80vh] overflow-hidden">
+    <div className="relative w-full h-[40dvh] md:h-[50dvh] lg:h-[60dvh] overflow-hidden">
 
-      <ParallaxLayer speed={0.3} blur>
+      <ParallaxLayer speed={0.3}>
         <Image
           src={slide.background}
           alt="background"
@@ -21,26 +21,32 @@ export default function HeroBanner({ slide }: { slide: Slide }) {
         />
       </ParallaxLayer>
 
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/30" />
 
       <ParallaxLayer speed={0.6}>
         <div className="flex items-center justify-center h-full">
         <div className="relative 
-            w-[80vw] 
-            md:w-[60vw] 
-            lg:w-[50vw] 
-            xl:w-[40vw] 
-            2xl:w-[45vw] 
+            w-[85vw] 
+            md:w-[65vw] 
+            lg:w-[60vw] 
+            xl:w-[55vw] 
+            2xl:w-[50vw] 
             max-w-[900px] 
-            h-[30vh] 
+            h-[30dvh] 
             max-h-[400px]"
             >
             <Image
               src={slide.logo}
               alt="logo"
               fill
-              sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 40vw"
-              className="object-contain drop-shadow-2xl"
+              sizes="
+                (max-width: 768px) 85vw,
+                (max-width: 1024px) 65vw,
+                (max-width: 1280px) 60vw,
+                (max-width: 1536px) 55vw,
+                50vw
+                "
+              className="object-contain"
             />
           </div>
         </div>
