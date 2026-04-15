@@ -19,7 +19,7 @@ export default function Footer () {
     <p>
       IDE © Todos os direitos reservados.
     </p>
-    <p>
+    <p className="mt-2">
     Termos de Uso | Política de Privacidade | Política de Cookies
     </p>
 
