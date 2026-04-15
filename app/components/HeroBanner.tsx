@@ -8,7 +8,7 @@ type Slide = {
 
 export default function HeroBanner({ slide }: { slide: Slide }) {
   return (
-    <div className="relative w-full h-[40dvh] md:h-[50dvh] lg:h-[60dvh] overflow-hidden">
+    <div className="relative w-full h-[35dvh] md:h-[45dvh] lg:h-[55dvh] overflow-hidden">
 
       <ParallaxLayer speed={0.3}>
         <Image
@@ -51,7 +51,9 @@ export default function HeroBanner({ slide }: { slide: Slide }) {
           </div>
         </div>
       </ParallaxLayer>
-
+      <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[2px] overflow-hidden">
+        <div className="w-[100%] h-full bg-gradient-to-r from-purple-400 to-transparent animate-shimmer" />
+      </div>
     </div>
   );
 }
