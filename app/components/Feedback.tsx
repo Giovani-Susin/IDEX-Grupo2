@@ -185,8 +185,8 @@ export const Feedback = () => {
               <Button
                 onClick={handleSend}
                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setEnterSpacePressed(true); }}
-                onKeyUp={(e) => { if (e.key === 'Enter' || e.key === ' ')  setEnterSpacePressed(false); }}
-                                
+                onKeyUp={(e) => { if (e.key === 'Enter' || e.key === ' ') setEnterSpacePressed(false); }}
+
                 className={`bg-white text-[#7726BD] font-bold rounded-full px-8 uppercase
                 hover:bg-gray-300 transition-colors border-2 border-black
                 ${EnterSpacePressed ? "!bg-gray-400 scale-95" : "active:bg-gray-400 active:scale-95"}`}>
