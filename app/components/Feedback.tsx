@@ -71,31 +71,20 @@ export const Feedback = () => {
 
   return (
     <section className="bg-[] w-full p-8 mt-16">
+      <h2 className="jogos-destaque-titulo">Deixe seu Feedback</h2>
 
-      {/*main container*/}
-      <div className="flex flex-col md:flex-row items-start justify-center gap-10 max-w-5xl mx-auto">
-
-        {/*mascot image*/}
-        <div className="w-full md:w-1/2 flex justify-center">
-          <img
-            src="mascote_IDE.svg"
-            alt="mascote IDE"
-            className="w-full h-auto
-              transition-all duration-300
-              hover:scale-105
-              hover:drop-shadow-[0_0_15px_rgba(119,38,189,1)]"
-          />
-        </div>
+      {/*main container max-w-5xl limita em 1024 pixels*/} 
+      <div className="flex flex-col md:flex-row items-start justify-center gap-10 max-w-5xl mx-auto"> 
 
         {/*form box*/}
         <div className="w-full md:w-1/2 bg-[#7726BD] p-8 rounded-2xl flex flex-col">
-          <h4 className="text-xl text-center font-bold text-black mb-8">
-            Dê seu feedback para os desenvolvedores
-          </h4>
           <div className="flex flex-col gap-4 w-full text-black">
 
             {/*name text bar*/}
             <div className="flex flex-col">
+              <label className="text-white font-bold text-lg">
+                Nome
+              </label>
               <Input
                 type="text"
                 placeholder="Seu nome"
@@ -116,6 +105,9 @@ export const Feedback = () => {
 
             {/*email text bar*/}
             <div className="flex flex-col">
+              <label className="text-white font-bold text-lg">
+                E-mail
+              </label>
               <Input
                 type="email"
                 placeholder="Seu endereço de e-mail"
@@ -143,6 +135,9 @@ export const Feedback = () => {
 
             {/*game text bar*/}
             <div className="flex flex-col">
+              <label className="text-white font-bold text-lg">
+                Jogo
+              </label>
               <Input
                 type="text"
                 placeholder="Nome do jogo"
@@ -163,6 +158,9 @@ export const Feedback = () => {
 
             {/*review text bar*/}
             <div className="flex flex-col">
+              <label className="text-white font-bold text-lg">
+                Avaliação
+              </label>
               <TextArea
                 placeholder="Deixe sua avaliação"
                 value={review}
@@ -171,7 +169,7 @@ export const Feedback = () => {
                   setErrorReview(false);
                   setEnterSpacePressed(false);
                 }}
-                className={`bg-white rounded p-2 min-h-[120px] ${errorReview ? "border-2 border-red-500" : "border-2 border-black"}`}
+                className={`bg-white rounded p-2 min-h-[100] ${errorReview ? "border-2 border-red-500" : "border-2 border-black"}`}
               />
               {errorReview && (
                 <span className="text-red-300 text-sm mt-1">
@@ -194,6 +192,18 @@ export const Feedback = () => {
               </Button>
             </div>
           </div>
+        </div>
+
+        {/*mascot image*/}
+        <div className="w-full md:w-1/2 flex justify-center -scale-x-100">
+          <img
+            src="mascote_IDE.svg"
+            alt="mascote IDE"
+            className="w-full h-auto
+              transition-all duration-300
+              hover:scale-105
+              hover:drop-shadow-[0_0_15px_rgba(119,38,189,1)]"
+          />
         </div>
       </div>
 
