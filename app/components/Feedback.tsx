@@ -70,140 +70,147 @@ export const Feedback = () => {
   };
 
   return (
-    <section className="bg-[] w-full p-8 mt-16">
-      <h2 className="jogos-destaque-titulo">Deixe seu Feedback</h2>
+    <section className="bg-[] w-full pt-[0px] pb-[80px] flex justify-center">
 
-      {/*main container max-w-5xl limita em 1024 pixels*/} 
-      <div className="flex flex-col md:flex-row items-start justify-center gap-10 max-w-5xl mx-auto"> 
+      <div className="flex flex-col mx-auto w-full max-w-[1163px] px-2 md:px-4">
 
-        {/*form box*/}
-        <div className="w-full md:w-1/2 bg-[#7726BD] p-8 rounded-2xl flex flex-col">
-          <div className="flex flex-col gap-4 w-full text-black">
-
-            {/*name text bar*/}
-            <div className="flex flex-col">
-              <label className="text-white font-bold text-lg">
-                Nome
-              </label>
-              <Input
-                type="text"
-                placeholder="Seu nome"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  setErrorName(false);
-                }}
-                className={`bg-white rounded p-2 ${errorName ? "border-2 border-red-500" : "border-2 border-black"}`}
-              />
-
-              {errorName && (
-                <span className="text-red-300 text-sm mt-1">
-                  Por favor, preencha o seu nome.
-                </span>
-              )}
-            </div>
-
-            {/*email text bar*/}
-            <div className="flex flex-col">
-              <label className="text-white font-bold text-lg">
-                E-mail
-              </label>
-              <Input
-                type="email"
-                placeholder="Seu endereço de e-mail"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setErrorEmail(false);
-                  setErrorEmailEmpty(false);
-                }}
-                className={`bg-white rounded p-2 ${errorEmail || errorEmailEmpty ? "border-2 border-red-500" : "border-2 border-black"}`}
-              />
-
-              {errorEmailEmpty && (
-                <span className="text-red-300 text-sm mt-1">
-                  Por favor, preencha o seu email.
-                </span>
-              )}
-
-              {errorEmail && (
-                <span className="text-red-300 text-sm mt-1">
-                  Por favor, digite um email válido.
-                </span>
-              )}
-            </div>
-
-            {/*game text bar*/}
-            <div className="flex flex-col">
-              <label className="text-white font-bold text-lg">
-                Jogo
-              </label>
-              <Input
-                type="text"
-                placeholder="Nome do jogo"
-                value={game}
-                onChange={(e) => {
-                  setGame(e.target.value);
-                  setErrorGame(false);
-
-                }}
-                className={`bg-white rounded p-2 ${errorGame ? "border-2 border-red-500" : "border-2 border-black"}`}
-              />
-              {errorGame && (
-                <span className="text-red-300 text-sm mt-1">
-                  Por favor, preencha o nome do jogo.
-                </span>
-              )}
-            </div>
-
-            {/*review text bar*/}
-            <div className="flex flex-col">
-              <label className="text-white font-bold text-lg">
-                Avaliação
-              </label>
-              <TextArea
-                placeholder="Deixe sua avaliação"
-                value={review}
-                onChange={(e) => {
-                  setReview(e.target.value);
-                  setErrorReview(false);
-                  setEnterSpacePressed(false);
-                }}
-                className={`bg-white rounded p-2 min-h-[100] ${errorReview ? "border-2 border-red-500" : "border-2 border-black"}`}
-              />
-              {errorReview && (
-                <span className="text-red-300 text-sm mt-1">
-                  Por favor, escreva a sua avaliação.
-                </span>
-              )}
-            </div>
-
-            {/*Send button*/}
-            <div className="flex justify-center mt-4">
-              <Button
-                onClick={handleSend}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setEnterSpacePressed(true); }}
-                onKeyUp={(e) => { if (e.key === 'Enter' || e.key === ' ') setEnterSpacePressed(false); }}
-
-                className={`bg-white text-[#7726BD] font-bold rounded-full px-8 uppercase
-                hover:bg-gray-300 transition-colors border-2 border-black
-                ${EnterSpacePressed ? "!bg-gray-400 scale-95" : "active:bg-gray-400 active:scale-95"}`}>
-                Enviar
-              </Button>
-            </div>
-          </div>
+        <div className="flex flex-col items-start w-full">
+          <h2 className="titulo-componentes">Deixe seu Feedback</h2>
         </div>
 
-        {/*mascot image*/}
-        <div className="w-full md:w-1/2 flex justify-center -scale-x-100">
-          <img
-            src="mascote_IDE.svg"
-            alt="mascote IDE"
-            className="w-full h-auto
-              transition-all duration-300
-              hover:scale-105
-              hover:drop-shadow-[0_0_15px_rgba(119,38,189,1)]"
-          />
+        {/*content (form + mascot) box */}
+        <div className="flex flex-col md:flex-row items-start justify-between gap-10 w-full">
+          
+          {/*form box*/}
+          <div className="w-full md:w-1/2 bg-[#7726BD] p-8 rounded-2xl flex flex-col">
+            <div className="flex flex-col gap-4 w-full text-black">
+
+              {/*name text bar*/}
+              <div className="flex flex-col">
+                <label className="text-white font-bold text-lg">
+                  Nome
+                </label>
+                <Input
+                  type="text"
+                  placeholder="Seu nome"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    setErrorName(false);
+                  }}
+                  className={`bg-white rounded p-2 ${errorName ? "border-2 border-red-500" : "border-2 border-black"}`}
+                />
+
+                {errorName && (
+                  <span className="text-red-300 text-sm mt-1">
+                    Por favor, preencha o seu nome.
+                  </span>
+                )}
+              </div>
+
+              {/*email text bar*/}
+              <div className="flex flex-col">
+                <label className="text-white font-bold text-lg">
+                  E-mail
+                </label>
+                <Input
+                  type="email"
+                  placeholder="Seu endereço de e-mail"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setErrorEmail(false);
+                    setErrorEmailEmpty(false);
+                  }}
+                  className={`bg-white rounded p-2 ${errorEmail || errorEmailEmpty ? "border-2 border-red-500" : "border-2 border-black"}`}
+                />
+
+                {errorEmailEmpty && (
+                  <span className="text-red-300 text-sm mt-1">
+                    Por favor, preencha o seu email.
+                  </span>
+                )}
+
+                {errorEmail && (
+                  <span className="text-red-300 text-sm mt-1">
+                    Por favor, digite um email válido.
+                  </span>
+                )}
+              </div>
+
+              {/*game text bar*/}
+              <div className="flex flex-col">
+                <label className="text-white font-bold text-lg">
+                  Jogo
+                </label>
+                <Input
+                  type="text"
+                  placeholder="Nome do jogo"
+                  value={game}
+                  onChange={(e) => {
+                    setGame(e.target.value);
+                    setErrorGame(false);
+
+                  }}
+                  className={`bg-white rounded p-2 ${errorGame ? "border-2 border-red-500" : "border-2 border-black"}`}
+                />
+                {errorGame && (
+                  <span className="text-red-300 text-sm mt-1">
+                    Por favor, preencha o nome do jogo.
+                  </span>
+                )}
+              </div>
+
+              {/*review text bar*/}
+              <div className="flex flex-col">
+                <label className="text-white font-bold text-lg">
+                  Avaliação
+                </label>
+                <TextArea
+                  placeholder="Deixe sua avaliação"
+                  value={review}
+                  onChange={(e) => {
+                    setReview(e.target.value);
+                    setErrorReview(false);
+                    setEnterSpacePressed(false);
+                  }}
+                  className={`bg-white rounded p-2 min-h-[100] ${errorReview ? "border-2 border-red-500" : "border-2 border-black"}`}
+                />
+                {errorReview && (
+                  <span className="text-red-300 text-sm mt-1">
+                    Por favor, escreva a sua avaliação.
+                  </span>
+                )}
+              </div>
+
+              {/*Send button*/}
+              <div className="flex justify-center mt-4">
+                <Button
+                  onClick={handleSend}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setEnterSpacePressed(true); }}
+                  onKeyUp={(e) => { if (e.key === 'Enter' || e.key === ' ') setEnterSpacePressed(false); }}
+
+                  className={`bg-white text-[#7726BD] font-bold rounded-full px-8 uppercase
+                  hover:bg-gray-300 transition-colors border-2 border-black
+                  ${EnterSpacePressed ? "!bg-gray-400 scale-95" : "active:bg-gray-400 active:scale-95"}`}>
+                  Enviar
+                </Button>
+              </div>
+            </div>
+          </div>
+        
+
+          {/*mascot image*/}
+          <div className="w-full md:w-1/2 flex justify-center -scale-x-100">
+            <img
+              src="mascote_IDE.svg"
+              alt="mascote IDE"
+              className="w-full h-auto
+                transition-all duration-300
+                hover:scale-105
+                hover:drop-shadow-[0_0_15px_rgba(119,38,189,1)]"
+            />
+          </div>
         </div>
       </div>
 

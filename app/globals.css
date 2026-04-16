@@ -34,17 +34,17 @@ body {
 /* JOGOS EM DESTAQUE */
 
 .jogos-destaque-section {
-  padding: 60px 0 80px;
+  padding: 80px 0 80px;
   width: 100%;
 }
 
 .jogos-destaque-container {
-  max-width: 1920px;
+  max-width: 1163px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 16px;
 }
 
-.jogos-destaque-titulo {
+.titulo-componentes {
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 800;
   color: #ffffff;
@@ -55,7 +55,7 @@ body {
   display: inline-block;
 }
 
-.jogos-destaque-titulo::after {
+.titulo-componentes::after {
   content: "";
   position: absolute;
   left: 0;

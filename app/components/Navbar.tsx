@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full shadow-md bg-black">
-      <div className="mx-auto max-w-[1200px] px-10">
+      <div className="mx-auto max-w-[1280px] px-10">
         <div className="flex items-center justify-between">
 
           <Link href="/" className="shrink-0">

@@ -95,8 +95,12 @@ const Carousel = () => {
   const jogoAtual = games[selectedIndex];
 
   return (
-    <div className="flex flex-col mx-auto my-10 items-center w-full max-w-[1163px] px-2 md:px-4"
-    >
+    <div className="flex flex-col mx-auto pt-[80px] pb-[0px] items-start w-full max-w-[1163px] px-2 md:px-4">
+      
+      <div className="flex flex-col">
+        <h2 className="titulo-componentes">Ofertas especiais</h2>
+      </div>
+      
       {/*carrossel*/}
       <div className="flex flex-row w-full aspect-[1163/450] items-stretch">
         <div className="relative w-[82.8%] h-full overflow-hidden rounded-l-xl">
