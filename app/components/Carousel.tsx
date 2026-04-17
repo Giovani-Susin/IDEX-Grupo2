@@ -6,11 +6,30 @@ import { useEffect, useState, useCallback } from "react";
 
 const Carousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 5000 }),
+    Autoplay({ delay: 5000, stopOnInteraction:false }),
   ]);
 
-  const goToPrev = () => emblaApi?.scrollPrev();
-  const goToNext = () => emblaApi?.scrollNext();
+  const autoplayReset = useCallback(() => {
+  const autoplay = emblaApi?.plugins()?.autoplay;
+
+    if(!autoplay) return;
+
+    autoplay.reset();
+  }, []);
+
+  const goToPrev = useCallback(() => {
+    if(emblaApi){
+      emblaApi.scrollPrev();
+      autoplayReset();
+    }
+  }, [emblaApi, autoplayReset]);
+
+  const goToNext = useCallback(() => {
+    if(emblaApi){
+      emblaApi.scrollNext();
+      autoplayReset();
+    }
+  }, [emblaApi, autoplayReset]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -180,8 +199,8 @@ const Carousel = () => {
         {/*barra lateral*/}
         <div className="relative flex w-[17.2%] h-full bg-[#7726BD] rounded-r-xl flex-col p-1 md:p-4">
            {/*desconto*/}
-          <div className="absolute flex top-1 md:top-3 right-0 translate-x-1/4 md:translate-x-1/3 rounded-sm md:rounded-md bg-[#00120B] border border-white md:border-2 w-[40px] md:w-[80px] h-[12px] md:h-[25px] z-10 justify-center items-center">
-            <h2 className="text-[6px] md:text-[11px] font-semibold font-inter text-white">
+          <div className=" carousel_desconto_tag absolute flex top-1 md:top-3 right-0 translate-x-1/4 md:translate-x-1/3 rounded-sm md:rounded-md bg-[#1a1a2e] border border-[#e0aaff40] md:border-1 w-[40px] md:w-[80px] h-[15px] md:h-[30px] z-10 justify-center items-center">
+            <h2 className="text-[6px] md:text-[11px] font-extrabold font-inter text-[#e0aaff]">
               {"-" +
                 Math.round(100 - (jogoAtual.desconto / jogoAtual.preco) * 100) +
                 "% OFF"}
@@ -204,10 +223,10 @@ const Carousel = () => {
 
           {/*preços*/}
           <div className="flex flex-col justify-center mb-2 md:mb-10">
-            <h1 className="text-[#00120B] text-[10px] sm:text-base md:text-3xl font-black font-bai leading-tight">
+            <h1 className="text-white text-[10px] sm:text-base md:text-3xl font-black font-bai leading-tight">
               {"R$ " + jogoAtual.desconto.toFixed(2).replace(".", ",")}
             </h1>
-            <h2 className="text-white text-[6px] sm:text-[10px] md:text-lg font-semibold font-bai -mt-1 opacity-90">
+            <h2 className="text-[#ffffff8c] line-through text-[6px] sm:text-[10px] md:text-lg font-semibold font-bai -mt-1 opacity-90">
               {"R$ " + jogoAtual.preco.toFixed(2).replace(".", ",")}
             </h2>
           </div>
@@ -219,7 +238,10 @@ const Carousel = () => {
         {games.map((_, index) => (
           <button
             key={index}
-            onClick={() => emblaApi?.scrollTo(index)}
+            onClick={() => {
+              emblaApi?.scrollTo(index)
+              autoplayReset();
+            }}
             className={`transition-all duration-500 rounded-sm md:rounded-md h-[4px] md:h-[10px] ${
               index === selectedIndex ? "w-[15px] md:w-[30px] bg-[#7726BD]/60" : "w-[10px] md:w-[22px] bg-[#FFFFFF]"
             }`}
