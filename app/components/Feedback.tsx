@@ -1,7 +1,7 @@
 
 "use client";
 import { useState } from "react";
-import { Card, Button, Input, TextArea } from "@heroui/react";
+import { Button, Input, TextArea } from "@heroui/react";
 
 export const Feedback = () => {
   const [name, setName] = useState("");
@@ -80,7 +80,7 @@ export const Feedback = () => {
 
         {/*content (form + mascot) box */}
         <div className="flex flex-col md:flex-row items-start justify-between gap-10 w-full">
-          
+
           {/*form box*/}
           <div className="w-full md:w-1/2 bg-[#7726BD] p-8 rounded-2xl flex flex-col">
             <div className="flex flex-col gap-4 w-full text-black">
@@ -198,10 +198,10 @@ export const Feedback = () => {
               </div>
             </div>
           </div>
-        
+
 
           {/*mascot image*/}
-          <div className="w-full md:w-1/2 flex justify-center -scale-x-100">
+          <div className="w-full md:flex md:w-1/2 justify-center -scale-x-100 hidden">
             <img
               src="mascote_IDE.svg"
               alt="mascote IDE"
