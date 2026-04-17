@@ -49,9 +49,11 @@ export default function Footer () {
       </Link>
     </div>
 
-    <p>
-      IDE © Todos os direitos reservados.
-    </p>
+    <div className="text-center text-white">
+      <p className="font-bold">
+        IDE © Todos os direitos reservados.
+      </p>
+    </div>
     <p className="mt-2">
     <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a> | <a href="#">Política de Cookies</a>
     </p>

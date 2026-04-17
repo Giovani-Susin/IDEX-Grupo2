@@ -121,7 +121,7 @@ export default function JogosEmDestaque() {
   return (
     <section className="jogos-destaque-section">
       <div className="jogos-destaque-container">
-        <h2 className="jogos-destaque-titulo">Jogos em Destaque</h2>
+        <h2 className="titulo-componentes">Jogos em Destaque</h2>
         <div className="jogos-destaque-grid">
           {jogos.map((jogo) => (
             <div key={jogo.id} className="jogo-card">
