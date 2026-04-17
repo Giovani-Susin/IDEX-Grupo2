@@ -95,14 +95,14 @@ const Carousel = () => {
   const jogoAtual = games[selectedIndex];
 
   return (
-    <div className="flex flex-col mx-auto pt-[80px] pb-[0px] items-start w-full max-w-[1163px] px-2 md:px-4">
-      
+    <div className="flex flex-col mx-auto pt-[80px] pb-0px items-start w-full max-w-[1163px] px-2 md:px-4">
+
       <div className="flex flex-col">
         <h2 className="titulo-componentes">Ofertas especiais</h2>
       </div>
-      
+
       {/*carrossel*/}
-      <div className="flex flex-row w-full aspect-[1163/450] items-stretch">
+      <div className="flex flex-row w-full aspect-1163/450 items-stretch">
         <div className="relative w-[82.8%] h-full overflow-hidden rounded-l-xl">
           <div
             className="flex h-full"
@@ -179,7 +179,7 @@ const Carousel = () => {
 
         {/*barra lateral*/}
         <div className="relative flex w-[17.2%] h-full bg-[#7726BD] rounded-r-xl flex-col p-1 md:p-4">
-           {/*desconto*/}
+          {/*desconto*/}
           <div className="absolute flex top-1 md:top-3 right-0 translate-x-1/4 md:translate-x-1/3 rounded-sm md:rounded-md bg-[#00120B] border border-white md:border-2 w-[40px] md:w-[80px] h-[12px] md:h-[25px] z-10 justify-center items-center">
             <h2 className="text-[6px] md:text-[11px] font-semibold font-inter text-white">
               {"-" +
@@ -220,9 +220,8 @@ const Carousel = () => {
           <button
             key={index}
             onClick={() => emblaApi?.scrollTo(index)}
-            className={`transition-all duration-500 rounded-sm md:rounded-md h-[4px] md:h-[10px] ${
-              index === selectedIndex ? "w-[15px] md:w-[30px] bg-[#7726BD]/60" : "w-[10px] md:w-[22px] bg-[#FFFFFF]"
-            }`}
+            className={`transition-all duration-500 rounded-sm md:rounded-md h-[4px] md:h-[10px] ${index === selectedIndex ? "w-[15px] md:w-[30px] bg-[#7726BD]/60" : "w-[10px] md:w-[22px] bg-[#FFFFFF]"
+              }`}
           />
         ))}
       </div>

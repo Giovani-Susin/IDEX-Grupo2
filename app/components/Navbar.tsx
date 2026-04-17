@@ -5,17 +5,31 @@ import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
-const navLinks = ["HOME", "OFERTAS", "DESTAQUES"];
+const navLinks = [
+  { label: "HOME",      href: "home"      },
+  { label: "OFERTAS",   href: "ofertas"   },
+  { label: "DESTAQUES", href: "destaques" },
+];
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    e.preventDefault();
+    if (href === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      document.getElementById(href)?.scrollIntoView({ behavior: "smooth" });
+    }
+    setIsMenuOpen(false);
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full shadow-md bg-black">
       <div className="mx-auto max-w-[1280px] px-10">
         <div className="flex items-center justify-between">
 
-          <Link href="/" className="shrink-0">
+          <Link href="/" className="shrink-0" onClick={(e) => handleNavClick(e, "home")}>
             <Image 
               src="/logo.svg" 
               alt="IDEX Logo" 
@@ -33,10 +47,11 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-14">
-            {navLinks.map((link) => (
+            {navLinks.map(({ label, href }) => (
               <Link
-                key={link}
-                href="#"
+                key={label}
+                href={`#${href}`}
+                onClick={(e) => handleNavClick(e, href)}
                 className="
                   relative
                   text-white font-bold text-lg tracking-widest
@@ -54,7 +69,7 @@ export default function Navbar() {
                   hover:after:w-full
                 "
               >
-                {link}
+                {label}
               </Link>
             ))}
           </nav>
@@ -106,7 +121,7 @@ export default function Navbar() {
               </svg>
             </button>
             <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[3px] overflow-hidden">
-              <div className="w-[200%] h-full bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-shimmer" />
+              <div className="w-[200%] h-full bg-linear-to-r from-transparent via-purple-400 to-transparent animate-shimmer" />
             </div>
           </div>
         </div>
@@ -114,10 +129,10 @@ export default function Navbar() {
 
       {isMenuOpen && (
         <div className="md:hidden border-t border-white/10 bg-[#020604] px-4 py-2 space-y-1">
-          {navLinks.map((link) => (
+          {navLinks.map(({ label, href }) => (
             <Link
-              key={link}
-              href="#"
+              key={label}
+              href={`#${href}`}
               className="
               block 
               px-3 
@@ -127,9 +142,9 @@ export default function Navbar() {
               transition-all duration-300
               hover:text-purple-400
               "
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, href)}
             >
-              {link}
+              {label}
             </Link>
           ))}
         </div>

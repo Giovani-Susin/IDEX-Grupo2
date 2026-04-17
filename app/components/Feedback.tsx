@@ -70,7 +70,7 @@ export const Feedback = () => {
   };
 
   return (
-    <section className="bg-[] w-full pt-[0px] pb-[80px] flex justify-center">
+    <section className="bg-[] w-full pt-0px pb-[80px] flex justify-center">
 
       <div className="flex flex-col mx-auto w-full max-w-[1163px] px-2 md:px-4">
 
@@ -192,7 +192,7 @@ export const Feedback = () => {
 
                   className={`bg-white text-[#7726BD] font-bold rounded-full px-8 uppercase
                   hover:bg-gray-300 transition-colors border-2 border-black
-                  ${EnterSpacePressed ? "!bg-gray-400 scale-95" : "active:bg-gray-400 active:scale-95"}`}>
+                  ${EnterSpacePressed ? "bg-gray-400! scale-95" : "active:bg-gray-400 active:scale-95"}`}>
                   Enviar
                 </Button>
               </div>
@@ -216,7 +216,7 @@ export const Feedback = () => {
 
       {/*sent feedback notification*/}
       <div className={` fixed bottom-5 left-1/2 -translate-x-1/2 
-          z-[100] bg-white text-[#7726BD] px-6 py-3 rounded-full 
+          z-100 bg-white text-[#7726BD] px-6 py-3 rounded-full 
         transition-all duration-200 ease-in-out 
         ${showToast ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"} `}>
         Feedback enviado com sucesso!

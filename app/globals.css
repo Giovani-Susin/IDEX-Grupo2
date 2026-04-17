@@ -31,6 +31,11 @@ body {
   touch-action: pan-y pinch-zoom;
 }
 
+/* SCROLL OFFSET para navbar sticky */
+section[id] {
+  scroll-margin-top: 72px;
+}
+
 /* JOGOS EM DESTAQUE */
 
 .jogos-destaque-section {
@@ -133,6 +138,7 @@ body {
   flex-direction: column;
   line-height: 1.2;
   gap: 1px;
+  margin-left: auto;
 }
 
 .jogo-preco-original {
