@@ -216,7 +216,7 @@ export const Feedback = () => {
 
       {/*sent feedback notification*/}
       <div className={` fixed bottom-5 left-1/2 -translate-x-1/2 
-          z-100 bg-white text-[#7726BD] px-6 py-3 rounded-full 
+          z-100] bg-white text-[#7726BD] px-6 py-3 rounded-full 
         transition-all duration-200 ease-in-out 
         ${showToast ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"} `}>
         Feedback enviado com sucesso!
