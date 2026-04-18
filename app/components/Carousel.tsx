@@ -197,10 +197,10 @@ const Carousel = () => {
         </div>
 
         {/*barra lateral*/}
-        <div className="relative flex w-[17.2%] h-full bg-[#7726BD] rounded-r-xl flex-col p-1 md:p-4">
+        <div className="relative flex w-[25%] lg:w-[18%] h-full bg-[#7726BD] rounded-r-xl flex-col p-1 md:p-4">
            {/*desconto*/}
-          <div className=" carousel_desconto_tag absolute flex top-1 md:top-3 right-0 translate-x-1/4 md:translate-x-1/3 rounded-sm md:rounded-md bg-[#1a1a2e] border border-[#e0aaff40] md:border-1 w-[40px] md:w-[80px] h-[15px] md:h-[30px] z-10 justify-center items-center">
-            <h2 className="text-[6px] md:text-[11px] font-extrabold font-inter text-[#e0aaff]">
+          <div className=" carousel_desconto_tag absolute flex top-1 md:top-3 right-3 md: right-0 translate-x-1/4 md:translate-x-1/3 rounded-sm md:rounded-md bg-[#1a1a2e] border border-[#e0aaff40] md:border-1 w-[70px] md:w-[80px] h-[25px] md:h-[30px] z-10 justify-center items-center">
+            <h2 className="text-[9px] md:text-[11px] font-extrabold font-inter text-[#e0aaff]">
               {"-" +
                 Math.round(100 - (jogoAtual.desconto / jogoAtual.preco) * 100) +
                 "% OFF"}
@@ -211,10 +211,10 @@ const Carousel = () => {
           <div className="flex flex-1 flex-col justify-center items-center w-full mt-2 md:mt-0">
             {jogoAtual.tags.map((tag, index) => (
               <div
-                className="flex rounded-br-lg md:rounded-br-xl rounded-tl-lg md:rounded-tl-xl bg-[#D9D9D9] justify-center items-center w-[90%] md:w-[150px] h-[14px] md:h-[26px] mb-1 md:mb-3"
+                className="flex rounded-br-lg md:rounded-br-xl rounded-tl-lg md:rounded-tl-xl bg-[#D9D9D9] justify-center items-center w-[90%] md:w-[150px] h-[16px] md:h-[26px] mb-1 md:mb-3"
                 key={index}
               >
-                <p className="text-black font-extrabold text-center text-[5px] sm:text-[8px] md:text-[13px] font-inter truncate px-1">
+                <p className="text-black font-extrabold text-center text-[8px] md:text-[10px] font-inter truncate px-1">
                   {tag}
                 </p>
               </div>
@@ -223,10 +223,10 @@ const Carousel = () => {
 
           {/*preços*/}
           <div className="flex flex-col justify-center mb-2 md:mb-10">
-            <h1 className="text-white text-[10px] sm:text-base md:text-3xl font-black font-bai leading-tight">
+            <h1 className="text-white text-[15px] sm:text-base md:text-3xl font-black font-bai leading-tight">
               {"R$ " + jogoAtual.desconto.toFixed(2).replace(".", ",")}
             </h1>
-            <h2 className="text-[#ffffff8c] line-through text-[6px] sm:text-[10px] md:text-lg font-semibold font-bai -mt-1 opacity-90">
+            <h2 className="text-[#ffffff8c] line-through text-[9px] sm:text-[10px] md:text-lg font-semibold font-bai -mt-1 opacity-90">
               {"R$ " + jogoAtual.preco.toFixed(2).replace(".", ",")}
             </h2>
           </div>

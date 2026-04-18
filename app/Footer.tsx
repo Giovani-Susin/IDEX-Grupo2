@@ -7,6 +7,39 @@ type LinkUnderlineProps = {
   href?: string;
 };
 
+type FooterIconProps = {
+  href: string;
+  src: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+};
+
+export const FooterIcon = ({
+  href,
+  src,
+  alt = 'Footer Icon',
+  width = 30,
+  height = 30,
+}: FooterIconProps) => {
+  return (
+    <Link href={href} target="_blank" rel="noopener noreferrer">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        className="
+          transition-all duration-300 ease-out 
+          hover:scale-110 
+          hover:brightness-125 
+          hover:drop-shadow-[0_0_5px_rgba(139,58,189,1)]
+          active:scale-95"
+      />
+    </Link>
+  );
+};
+
 const LinkUnderline = ({ children, href = "#" }: LinkUnderlineProps) => (
   <a href={href} className="relative group">
     <span className="transition-colors duration-300 group-hover:text-purple-400 group-hover:drop-shadow-[0_0_6px_rgba(155,109,255,0.6)]">
@@ -19,49 +52,26 @@ const LinkUnderline = ({ children, href = "#" }: LinkUnderlineProps) => (
 export default function Footer () {
   return (
   <footer className="footer relative flex flex-col justify-center items-center pt-[25px] pb-20">
+    <div className="pointer-events-none absolute top-0 left-0 w-full h-[1px] overflow-hidden">
+      <div className="w-full h-full bg-linear-to-r from-purple-400 to-transparent animate-shimmer" />
+    </div>
     <div className="flex flex-row gap-3 mb-5 max-h-[30px]">
-      <Link href="https://www.instagram.com/ide_jr/" target="_blank" rel="noopener noreferrer">
-        <Image 
-        src="/logo-instagram.svg"  
-        alt="logo do instagram" 
-        width={30} 
-        height={30} 
-        className="
-          transition-all duration-300 ease-out 
-          hover:scale-110 
-          hover:brightness-125 
-          hover:drop-shadow-[0_0_5px_rgba(139,58,189,1)]
-          active:scale-95"
-        />
-      </Link>
-      <Link href="https://www.linkedin.com/company/empresa-j%C3%BAnior-ide/" target="_blank" rel="noopener noreferrer">
-        <Image 
-          src="/logo-linkedin.svg"  
-          alt="logo do linkedin" 
-          width={30} 
-          height={30}
-          className="
-            transition-all duration-300 ease-out 
-            hover:scale-110 
-            hover:brightness-125 
-            hover:drop-shadow-[0_0_5px_rgba(139,58,189,1)]
-            active:scale-95"
-        />
-      </Link>
-      <Link href="https://idejr.com.br/" target="_blank" rel="noopener noreferrer">
-        <Image 
-          src="/logo-ide-branca.svg"  
-          alt="logo da IDE" 
-          width={54} 
-          height={30}
-          className="
-            transition-all duration-300 ease-out 
-            hover:scale-110 
-            hover:brightness-125 
-            hover:drop-shadow-[0_0_5px_rgba(139,58,189,1)]
-            active:scale-95"
-        />
-      </Link>
+      <FooterIcon
+        href="https://www.instagram.com/ide_jr/"
+        src="/logo-instagram.svg"
+      />
+
+      <FooterIcon
+        href="https://www.linkedin.com/company/empresa-júnior-ide/"
+        src="/logo-linkedin.svg"
+      />
+
+      <FooterIcon
+        href="https://idejr.com.br/"
+        src="/logo-ide-branca.svg"
+        width={54}
+        height={30}
+      />
     </div>
 
     <p>
@@ -83,7 +93,7 @@ export default function Footer () {
         height={50}
         className="
           opacity-25 lg:opacity-35
-          scale-60 lg:scale-75
+          scale-[0.6] lg:scale-[0.75]
           select-none
         "
       />

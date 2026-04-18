@@ -4,12 +4,95 @@ import { useState } from "react";
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { Tuffy } from "next/font/google";
 
 const navLinks = [
   { label: "HOME",      href: "home"      },
   { label: "OFERTAS",   href: "ofertas"   },
   { label: "DESTAQUES", href: "destaques" },
 ];
+
+interface IconButtonProps {
+  src: string;
+  alt: string;
+  onClick?: () => void;
+  rotateOnHover?: boolean;
+}
+
+function IconButton({
+  src,
+  alt,
+  onClick,
+  rotateOnHover = false,
+}: IconButtonProps) {
+  return (
+    <Button
+      isIconOnly
+      variant="ghost"
+      onClick={onClick}
+      className="
+        rounded-full 
+        w-7 h-7 sm:w-11 sm:h-11
+      "
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={40}
+        height={40}
+        className={`
+          transition-all duration-300 ease-out
+          hover:scale-115 
+          active:scale-95
+          ${rotateOnHover ? "hover:rotate-90" : ""}
+        `}
+      />
+    </Button>
+  );
+}
+
+interface NavLinkProps {
+  label: string;
+  href: string;
+  onClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+  mobile?: boolean;
+}
+
+function NavLink({ label, href, onClick, mobile }: NavLinkProps) {
+  return (
+    <Link
+      href={href === "home" ? "/" : `#${href}`}
+      onClick={(e) => onClick(e, href)}
+      className={
+        mobile
+          ? `
+            block px-3 py-3 rounded-md
+            text-white font-bold text-lg tracking-wide
+            transition-all duration-300
+            hover:text-purple-400
+          `
+          : `
+            relative
+            text-white font-bold text-lg tracking-widest
+            transition-all duration-300
+            hover:text-purple-400
+            after:content-['']
+            after:absolute
+            after:left-0
+            after:-bottom-1
+            after:w-0
+            after:h-[2px]
+            after:bg-purple-400
+            after:transition-all
+            after:duration-300
+            hover:after:w-full
+          `
+      }
+    >
+      {label}
+    </Link>
+  );
+}
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,60 +131,18 @@ export default function Navbar() {
 
           <nav className="hidden md:flex items-center gap-14">
             {navLinks.map(({ label, href }) => (
-              <Link
+              <NavLink
                 key={label}
-                href={`#${href}`}
-                onClick={(e) => handleNavClick(e, href)}
-                className="
-                  relative
-                  text-white font-bold text-lg tracking-widest
-                  transition-all duration-300
-                  hover:text-purple-400
-                  after:content-['']
-                  after:absolute
-                  after:left-0
-                  after:-bottom-1
-                  after:w-0
-                  after:h-[2px]
-                  after:bg-purple-400
-                  after:transition-all
-                  after:duration-300
-                  hover:after:w-full
-                "
-              >
-                {label}
-              </Link>
+                label={label}
+                href={href}
+                onClick={handleNavClick}
+              />
             ))}
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button isIconOnly variant="ghost" className="rounded-full w-11 h-11">
-              <Image 
-                src="/ICON - User.svg" 
-                alt="Usuário" 
-                width={40} 
-                height={40}
-                className="
-                  transition-all duration-300 ease-out
-                  hover:scale-115 
-                  active:scale-95
-                " 
-              />
-            </Button>
-
-            <Button isIconOnly variant="ghost" className="rounded-full w-11 h-11">
-              <Image 
-                src="/ICON - Config.svg" 
-                alt="Configurações" 
-                width={40} 
-                height={40} 
-                className="
-                  transition-all duration-300 ease-out
-                  hover:scale-115 
-                  active:scale-95
-                "
-              />
-            </Button>
+            <IconButton src="/ICON - User.svg" alt="Usuário" />
+            <IconButton src="/ICON - Config.svg" alt="Configurações" rotateOnHover />
 
             <button
               type="button"
@@ -130,22 +171,13 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden border-t border-white/10 bg-[#020604] px-4 py-2 space-y-1">
           {navLinks.map(({ label, href }) => (
-            <Link
+            <NavLink
               key={label}
-              href={`#${href}`}
-              className="
-              block 
-              px-3 
-              py-3 
-              rounded-md
-              text-white font-bold text-lg tracking-wide 
-              transition-all duration-300
-              hover:text-purple-400
-              "
-              onClick={(e) => handleNavClick(e, href)}
-            >
-              {label}
-            </Link>
+              label={label}
+              href={href}
+              onClick={handleNavClick}
+              mobile
+            />
           ))}
         </div>
       )}
