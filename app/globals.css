@@ -31,6 +31,14 @@ body {
   touch-action: pan-y pinch-zoom;
 }
 
+.carousel_desconto_tag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left, rgba(139, 47, 201, 0.3), transparent 70%);
+}
+
 /* JOGOS EM DESTAQUE */
 
 .jogos-destaque-section {
