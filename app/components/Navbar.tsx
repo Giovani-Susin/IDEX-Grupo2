@@ -5,15 +5,18 @@ import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Array de links de navegação
 const navLinks = [
-  { label: "HOME",      href: "home"      },
-  { label: "OFERTAS",   href: "ofertas"   },
+  { label: "HOME", href: "home" },
+  { label: "OFERTAS", href: "ofertas" },
   { label: "DESTAQUES", href: "destaques" },
 ];
 
+// Componente Navbar
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Hook para controlar o estado do menu
 
+  // Função para lidar com o clique nos links de navegação
   function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
     e.preventDefault();
     if (href === "home") {
@@ -24,18 +27,19 @@ export default function Navbar() {
     setIsMenuOpen(false);
   }
 
+  // Retorno do componente Navbar
   return (
     <header className="sticky top-0 z-50 w-full shadow-md bg-black">
       <div className="mx-auto max-w-[1280px] px-10">
         <div className="flex items-center justify-between">
-
+          {/* Logo da IDEX */}
           <Link href="/" className="shrink-0" onClick={(e) => handleNavClick(e, "home")}>
-            <Image 
-              src="/logo.svg" 
-              alt="IDEX Logo" 
-              width={200} 
-              height={54} 
-              priority 
+            <Image
+              src="/logo.svg"
+              alt="IDEX Logo"
+              width={200}
+              height={54}
+              priority
               className="
                 transition-all duration-300 ease-out
                 hover:scale-110 
@@ -43,9 +47,9 @@ export default function Navbar() {
                 w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px]
                 hover:drop-shadow-[0_0_15px_rgba(119,38,189,1)]
               "
-              />
+            />
           </Link>
-
+          {/* Links de navegação */}
           <nav className="hidden md:flex items-center gap-14">
             {navLinks.map(({ label, href }) => (
               <Link
@@ -73,28 +77,14 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
-
+          {/* Botões de usuário e configurações */}
           <div className="flex items-center gap-3">
             <Button isIconOnly variant="ghost" className="rounded-full w-11 h-11">
-              <Image 
-                src="/ICON - User.svg" 
-                alt="Usuário" 
-                width={40} 
+              <Image
+                src="/ICON - User.svg"
+                alt="Usuário"
+                width={40}
                 height={40}
-                className="
-                  transition-all duration-300 ease-out
-                  hover:scale-115 
-                  active:scale-95
-                " 
-              />
-            </Button>
-
-            <Button isIconOnly variant="ghost" className="rounded-full w-11 h-11">
-              <Image 
-                src="/ICON - Config.svg" 
-                alt="Configurações" 
-                width={40} 
-                height={40} 
                 className="
                   transition-all duration-300 ease-out
                   hover:scale-115 
@@ -103,6 +93,22 @@ export default function Navbar() {
               />
             </Button>
 
+            {/* Botão de configurações */}
+            <Button isIconOnly variant="ghost" className="rounded-full w-11 h-11">
+              <Image
+                src="/ICON - Config.svg"
+                alt="Configurações"
+                width={40}
+                height={40}
+                className="
+                  transition-all duration-300 ease-out
+                  hover:scale-115 
+                  active:scale-95
+                "
+              />
+            </Button>
+
+            {/* Botão do menu mobile */}
             <button
               type="button"
               className="
@@ -113,7 +119,7 @@ export default function Navbar() {
                 transition-all duration-300 ease-out
                 hover:scale-115 
                 active:scale-95
-              " 
+              "
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,6 +133,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Menu mobile */}
       {isMenuOpen && (
         <div className="md:hidden border-t border-white/10 bg-[#020604] px-4 py-2 space-y-1">
           {navLinks.map(({ label, href }) => (
