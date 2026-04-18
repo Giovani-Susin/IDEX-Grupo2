@@ -52,7 +52,7 @@ export default function HeroBanner({ slide }: { slide: Slide }) {
         </div>
       </ParallaxLayer>
       <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[2px] overflow-hidden">
-        <div className="w-[100%] h-full bg-gradient-to-r from-purple-400 to-transparent animate-shimmer" />
+        <div className="w-full h-full bg-linear-to-r from-purple-400 to-transparent animate-shimmer" />
       </div>
     </div>
   );

@@ -6,10 +6,16 @@ import { Feedback } from "./components/Feedback";
 const Page = () => {
   return (
     <div>
-      <HeroSelector/>
-      <Carousel />
-      <JogosEmDestaque />
-      <Feedback />  
+      <section id="home">
+        <HeroSelector/>
+      </section>
+      <section id="ofertas">
+        <Carousel />
+      </section>
+      <section id="destaques">
+        <JogosEmDestaque />
+      </section>
+      <Feedback />
     </div>
   );
 };
