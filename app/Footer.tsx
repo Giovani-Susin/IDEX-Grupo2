@@ -1,5 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ReactNode } from "react";
+
+type LinkUnderlineProps = {
+  children: ReactNode;
+  href?: string;
+};
+
+const LinkUnderline = ({ children, href = "#" }: LinkUnderlineProps) => (
+  <a href={href} className="relative group">
+    <span className="transition-colors duration-300 group-hover:text-purple-400 group-hover:drop-shadow-[0_0_6px_rgba(155,109,255,0.6)]">
+      {children}
+    </span>
+    <span className="absolute left-0 -bottom-0.5 h-[2px] w-full bg-purple-400 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+  </a>
+);
 
 export default function Footer () {
   return (
@@ -49,17 +64,29 @@ export default function Footer () {
       </Link>
     </div>
 
-    <div className="text-center text-white">
-      <p className="font-bold">
-        IDE © Todos os direitos reservados.
-      </p>
-    </div>
-    <p className="mt-2">
-    <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a> | <a href="#">Política de Cookies</a>
+    <p>
+      IDE © Todos os direitos reservados.
+    </p>
+    <p className="mt-2 flex gap-2 text-sm">
+      <LinkUnderline>Termos de Uso</LinkUnderline>
+      <span>|</span>
+      <LinkUnderline>Política de Privacidade</LinkUnderline>
+      <span>|</span>
+      <LinkUnderline>Política de Cookies</LinkUnderline>
     </p>
 
-    <div className="absolute flex mt-10 mb-5 right-5 bottom-0">
-        <Image src="/logo-ide-branca.svg"  alt="logo do instagram" width={90} height={50}/>
+    <div className="absolute right-5 bottom-0 mt-10 mb-5 pointer-events-none">
+      <Image
+        src="/logo-ide-branca.svg"
+        alt="logo do instagram"
+        width={90}
+        height={50}
+        className="
+          opacity-25 lg:opacity-35
+          scale-60 lg:scale-75
+          select-none
+        "
+      />
     </div>
 
   </footer>
